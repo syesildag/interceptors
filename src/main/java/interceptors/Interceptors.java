@@ -1,14 +1,10 @@
 package interceptors;
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.*;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-@Retention(RUNTIME)
-@Target(METHOD)
-public @interface Interceptors
-{
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
+@Inherited
+public @interface Interceptors {
    Class<? extends Interceptor>[] value();
 }
